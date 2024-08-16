@@ -1,3 +1,9 @@
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -58,19 +64,19 @@ const Footer = () => {
         {/* Social Media Icons */}
         <div>
           <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-          <div className="flex space-x-4">
-            <a href="#" className="hover:text-white">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className="hover:text-white">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="hover:text-white">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" className="hover:text-white">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
+          <div className="flex space-x-4 justify-center md:justify-start">
+            <Link to="#" className="hover:text-white">
+              <FaFacebookF />
+            </Link>
+            <Link to="#" className="hover:text-white">
+              <FaTwitter />
+            </Link>
+            <Link to="#" className="hover:text-white">
+              <FaInstagram />
+            </Link>
+            <Link to="#" className="hover:text-white">
+              <FaLinkedinIn />
+            </Link>
           </div>
         </div>
       </div>
