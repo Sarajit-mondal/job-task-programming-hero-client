@@ -43,7 +43,9 @@ const Pagination = ({
         <button
           id="prevBtn"
           className={`pagination-btn ${
-            currentPage === 1 ? "cursor-not-allowed opacity-50" : "bg-blue-500"
+            currentPage === 1
+              ? "cursor-not-allowed opacity-80 bg-blue-300"
+              : "bg-blue-500"
           } size-7 rounded-full flex justify-center items-center font-extrabold text-white `}
           onClick={handlePrevPage}
           disabled={currentPage === 1}
@@ -92,7 +94,7 @@ const Pagination = ({
             id="nextBtn"
             className={`pagination-btn ${
               currentPage === totalPages
-                ? "cursor-not-allowed opacity-50"
+                ? "cursor-not-allowed opacity-80 bg-blue-300"
                 : "bg-blue-500"
             } size-7 rounded-full flex justify-center items-center font-extrabold text-white`}
             onClick={handleNextPage}
