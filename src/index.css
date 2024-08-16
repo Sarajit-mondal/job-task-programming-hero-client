@@ -1,0 +1,16 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  main{
+    @apply max-w-[1280px] mx-auto w-11/12; 
+ }
+
+}
+
+a.active{
+  font-weight: 800;
+} 
+

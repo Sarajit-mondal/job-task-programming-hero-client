@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Dr. Emily Adams",
+        "image": "https://i.ibb.co/PTK91HZ/image-121.png",
+        "address": "123 Maple Street, Springfield, IL",
+        "companyName": "MindCare Clinic",
+        "img": "https://example.com/image1.jpg",
+        "featured": "Therapist",
+        "description": "Dr. Emily Adams has been practicing psychology for over 15 years, specializing in cognitive behavioral therapy and mindfulness techniques. She has a passion for helping clients navigate through life's challenges, providing them with the tools they need to manage stress, anxiety, and depression. Her approach is empathetic and client-centered, ensuring that every session is tailored to the individual's needs."
+    },
+    {
+        "name": "John Doe",
+        "image": "https://example.com/profile2.jpg",
+        "address": "456 Oak Avenue, San Francisco, CA",
+        "companyName": "Wellness Pathways",
+        "img": "https://example.com/image2.jpg",
+        "featured": "Testimonial",
+        "description": "After struggling with anxiety for many years, I found relief through therapy at Wellness Pathways. The compassionate care and personalized approach made a huge difference in my life. The sessions provided me with practical strategies to manage my anxiety and improve my overall well-being. I feel more in control of my life now and am grateful for the support I received."
+    },
+    {
+        "name": "Dr. Michael Thompson",
+        "image": "https://i.ibb.co/9sPFWvw/image-118.png",
+        "address": "789 Pine Road, Austin, TX",
+        "companyName": "Healing Minds",
+        "img": "https://example.com/image3.jpg",
+        "featured": "Therapist",
+        "description": "Dr. Michael Thompson is an experienced clinical psychologist who specializes in working with individuals facing addiction and trauma. With over 20 years of experience, he uses a combination of evidence-based therapies to help clients heal and recover. His empathetic and non-judgmental approach allows clients to feel safe and supported as they work through their challenges."
+    },
+    {
+        "name": "Sarah Johnson",
+        "image": "https://i.ibb.co/9sPFWvw/image-118.png",
+        "address": "321 Birch Lane, Miami, FL",
+        "companyName": "Renew Wellness",
+        "img": "https://example.com/image4.jpg",
+        "featured": "Testimonial",
+        "description": "The therapy I received at Renew Wellness was life-changing. The therapist was incredibly understanding and offered me the guidance I needed to work through my depression. The tools and techniques I learned have helped me to build resilience and regain my sense of hope and purpose. I highly recommend Renew Wellness to anyone seeking support."
+    },
+    {
+        "name": "Dr. Sophia Lee",
+        "image": "https://i.ibb.co/Zx7Fpq9/image-119.png",
+        "address": "654 Cedar Street, New York, NY",
+        "companyName": "Thrive Therapy",
+        "img": "https://example.com/image5.jpg",
+        "featured": "Therapist",
+        "description": "Dr. Sophia Lee is a licensed therapist specializing in marriage and family therapy. With a warm and approachable demeanor, she helps couples and families navigate complex relationship dynamics. Her goal is to foster healthy communication and understanding within families, allowing them to overcome conflicts and strengthen their bonds."
+    },
+    {
+        "name": "James Wilson",
+        "image": "https://i.ibb.co/PTK91HZ/image-121.png",
+        "address": "987 Willow Road, Los Angeles, CA",
+        "companyName": "Life Balance Counseling",
+        "img": "https://example.com/image6.jpg",
+        "featured": "Testimonial",
+        "description": "Working with Life Balance Counseling has been a transformative experience for me. The therapist's insight and compassion helped me to confront my anxiety and develop healthier coping mechanisms. The support I received has had a profound impact on my life, and I feel more confident and empowered as a result."
+    },
+    {
+        "name": "Dr. David Clark",
+        "image": "https://i.ibb.co/WGhBhyZ/image-116.png",
+        "address": "543 Elm Avenue, Denver, CO",
+        "companyName": "Serenity Therapy Center",
+        "img": "https://example.com/image7.jpg",
+        "featured": "Therapist",
+        "description": "Dr. David Clark has over 25 years of experience in the field of psychotherapy. He specializes in treating depression, anxiety, and mood disorders using a holistic approach that incorporates mindfulness, cognitive behavioral therapy, and relaxation techniques. His goal is to help clients achieve a balanced and fulfilling life."
+    },
+    {
+        "name": "Olivia Brown",
+        "image": "https://i.ibb.co/gVvL7vw/image-117.png",
+        "address": "210 Spruce Street, Seattle, WA",
+        "companyName": "Horizon Counseling",
+        "img": "https://example.com/image8.jpg",
+        "featured": "Testimonial",
+        "description": "I cannot express how grateful I am for the care and support I received at Horizon Counseling. The therapist was not only professional but also deeply empathetic, helping me work through some of the most challenging times in my life. The sessions were a safe space for me to explore my feelings and build the strength I needed to move forward."
+    },
+    {
+        "name": "Dr. Grace Martinez",
+        "image": "https://i.ibb.co/Zx7Fpq9/image-119.png",
+        "address": "789 Cypress Avenue, Boston, MA",
+        "companyName": "Harmony Counseling Group",
+        "img": "https://example.com/image9.jpg",
+        "featured": "Therapist",
+        "description": "Dr. Grace Martinez is a dedicated therapist with a passion for helping individuals and couples navigate through life's transitions. Her expertise includes relationship counseling, stress management, and self-esteem building. She believes in the power of a supportive therapeutic relationship to foster personal growth and resilience."
+    },
+    {
+        "name": "Lucas Evans",
+        "image": "https://i.ibb.co/Zx7Fpq9/image-119.png",
+        "address": "456 Maple Street, Chicago, IL",
+        "companyName": "Insight Therapy Solutions",
+        "img": "https://example.com/image10.jpg",
+        "featured": "Testimonial",
+        "description": "Insight Therapy Solutions provided me with the tools and support I needed to overcome my challenges. The therapist's understanding and tailored approach made a significant difference in my journey. The progress I've made has been incredible, and I now have a more positive outlook on life. I highly recommend their services to anyone seeking help."
+    }
+]
