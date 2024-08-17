@@ -1,3 +1,6 @@
+// https://jobs-task-progaminghero-server.vercel.app/
+// https://programming-hero-task-d058d.web.app/
+
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import FilterControls from "../../component/products/FilterControls";
@@ -9,49 +12,59 @@ import axios from "axios";
 
 function Home() {
   // pagination
-  const [totalItems, setTotalItems] = useState(200); // Example total items
- const [currentPage, setCurrentPage] = useState(1);
- const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [totalItems, setTotalItems] = useState(1); // Example total items
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   // pagination
-const [categories,setCategories] = useState([])
-const [allProducts,setAllProducts] = useState([])
-const [searchValue,setSearchValue] = useState()
-const [categoryValue,setCategoryValue] = useState()
-const [priceRangeValue,setPriceRangeValue] = useState()
+  const [categories, setCategories] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [searchValue, setSearchValue] = useState();
+  const [categoryValue, setCategoryValue] = useState();
+  const [priceRangeValue, setPriceRangeValue] = useState();
 
-// get All Products
-const getAllProducts =async()=>{
-  const data =await axios.get(`http://localhost:5000/AllProducts?limit=10&skip=30&currentPage=1&priceSort=lowToHigh&priceRang=10-20&search=searchValue`)
-  setAllProducts(data.data)
-}
-useEffect(()=>{
-getAllProducts()
-},[])
-  console.log(searchValue,categoryValue,priceRangeValue,currentPage-1,itemsPerPage)
+  // get All Products
+  const getAllProducts = async () => {
+    const data = await axios.get(
+      `http://localhost:5000/AllProducts?limit=${itemsPerPage}&currentPage=${
+        currentPage - 1
+      }&category=${categoryValue}&priceSort=lowToHigh&priceRang=10-20&search=searchValue`
+    );
+    setAllProducts(data.data.result);
+    setTotalItems(data.data.totalProducts);
+  };
+  useEffect(() => {
+    getAllProducts();
+  }, [currentPage, searchValue, categoryValue, priceRangeValue]);
+  console.log(
+    searchValue,
+    categoryValue,
+    priceRangeValue,
+    currentPage - 1,
+    itemsPerPage
+  );
   // onFilterChange
-  const onFilterChange =(item,value)=>{
-    if(item === "search"){
-    setSearchValue(value)
-    }else if(item === "category"){
-     setCategoryValue(value)
-    }else{
-      setPriceRangeValue(value)
+  const onFilterChange = (item, value) => {
+    if (item === "search") {
+      setSearchValue(value);
+    } else if (item === "category") {
+      setCategoryValue(value);
+    } else {
+      setPriceRangeValue(value);
     }
-  }
+  };
 
   // get all category
- const getAllCategory =async()=>{
-  const data =await axios.get(`https://dummyjson.com/products/category-list`)
-  setCategories(data.data)
-  console.log(data.data)
-}
+  const getAllCategory = async () => {
+    const data = await axios.get(
+      `https://dummyjson.com/products/category-list`
+    );
+    setCategories(data.data);
+  };
 
-useEffect(()=>{
-getAllCategory()
-},[])
- // get all category
-
-
+  useEffect(() => {
+    getAllCategory();
+  }, []);
+  // get all category
 
   // pagination
   const handlePageChange = (page) => {
@@ -68,10 +81,13 @@ getAllCategory()
     <div>
       <div>
         <h2 className="text-4xl font-bold text-center mt-8">All Products</h2>
-        <FilterControls onFilterChange={onFilterChange} categories={categories}/>
+        <FilterControls
+          onFilterChange={onFilterChange}
+          categories={categories}
+        />
       </div>
       <div>
-        <ProductCard allProducts={allProducts}/>
+        <ProductCard allProducts={allProducts} />
       </div>
       <div className="mb-20">
         {/* pagination */}

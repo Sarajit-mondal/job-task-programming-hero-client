@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const {logOut} = useContext(AuthContext)
   return (
     <nav className="bg-blue-600 text-white mt-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,7 +56,9 @@ const navbar = () => {
             </button>
            </NavLink>
            <NavLink>
-           <button className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+           <button onClick={async()=>{
+             await logOut()
+           }} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
               Sign Out
             </button>
            </NavLink>

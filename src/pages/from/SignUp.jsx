@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  
+    const {signInWithGoogle,createUser} = useContext(AuthContext)
 
-  const handleGoogleSignUp = () => {
+  const handleGoogleSignUp = async() => {
     // Handle Google Sign Up logic here
-    console.log("Google Sign Up");
+     await signInWithGoogle()
   };
 
   const handleFacebookSignUp = () => {
@@ -17,14 +20,16 @@ const SignUp = () => {
     console.log("Facebook Sign Up");
   };
 
-  const handleEmailSignUp = (e) => {
+  const handleEmailSignUp = async(e) => {
     e.preventDefault();
     if (password.length < 6) {
       setError('Password must be at least 6 characters long');
     } else {
       // Handle Email Sign Up logic here
-      console.log("Email Sign Up", { name, email, password });
-      setError('');
+    //   console.log("Email Sign Up", { name, email, password });
+    await createUser(email,password)
+    alert("signUp success")
+     setError('');
     }
   };
 
