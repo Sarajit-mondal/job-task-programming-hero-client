@@ -21,20 +21,28 @@ function Home() {
   const [searchValue, setSearchValue] = useState();
   const [categoryValue, setCategoryValue] = useState();
   const [priceRangeValue, setPriceRangeValue] = useState();
+  const [priceSortValue, setPriceSortValue] = useState();
 
   // get All Products
   const getAllProducts = async () => {
     const data = await axios.get(
-      `http://localhost:5000/AllProducts?limit=${itemsPerPage}&currentPage=${
+      `http://localhost:5000/AllProducts?&category=${categoryValue}&limit=${itemsPerPage}&currentPage=${
         currentPage - 1
-      }&category=${categoryValue}&priceSort=lowToHigh&priceRang=10-20&search=searchValue`
+      }&priceSort=${priceSortValue}&priceRang=${priceRangeValue}&search=searchValue`
     );
     setAllProducts(data.data.result);
     setTotalItems(data.data.totalProducts);
   };
   useEffect(() => {
     getAllProducts();
-  }, [currentPage, searchValue, categoryValue, priceRangeValue]);
+  }, [
+    itemsPerPage,
+    currentPage,
+    searchValue,
+    categoryValue,
+    priceRangeValue,
+    priceSortValue,
+  ]);
   console.log(
     searchValue,
     categoryValue,
@@ -43,13 +51,20 @@ function Home() {
     itemsPerPage
   );
   // onFilterChange
+  // onFilterChange
   const onFilterChange = (item, value) => {
     if (item === "search") {
       setSearchValue(value);
     } else if (item === "category") {
       setCategoryValue(value);
     } else {
-      setPriceRangeValue(value);
+      if (value === "Low to High" || value === "High to Low") {
+        setPriceSortValue(value);
+        setPriceRangeValue();
+      } else {
+        setPriceRangeValue(value);
+        setPriceSortValue("Low to High");
+      }
     }
   };
 

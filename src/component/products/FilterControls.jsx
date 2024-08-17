@@ -43,7 +43,7 @@ const FilterControls = ({ onFilterChange, categories }) => {
           onChange={(e) => onFilterChange("category", e.target.value)}
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         >
-          <option value="">All</option>
+          <option value="All">All</option>
           {categories.map((category) => (
             <option key={category} value={category}>
               {category}
@@ -66,9 +66,18 @@ const FilterControls = ({ onFilterChange, categories }) => {
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         >
           <option value="all">All</option>
-          <option value="0-50">$0 - $50</option>
-          <option value="50-100">$50 - $100</option>
-          <option value="100-200">$100 - $200</option>
+          <option value="Low to High">Low to High</option>
+          <option value="High to Low">High to Low</option>
+
+          {[...Array(10)].map((_, inx) => {
+            const lower = inx === 0 ? 1 : inx * 10;
+            const upper = (inx + 1) * 10;
+            return (
+              <option key={inx} value={`${lower}- ${upper}`}>
+                ${`${lower}- ${upper}`}
+              </option>
+            );
+          })}
         </select>
       </div>
     </div>
