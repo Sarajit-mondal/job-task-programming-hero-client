@@ -6,9 +6,39 @@ import ProductCard from "../../component/products/ProductCard";
 import axios from "axios";
 
 function Home() {
+  // pagination
+  const [totalItems, setTotalItems] = useState(200); // Example total items
+ const [currentPage, setCurrentPage] = useState(1);
+ const [itemsPerPage, setItemsPerPage] = useState(10);
+  // pagination
 const [categories,setCategories] = useState([])
+const [allProducts,setAllProducts] = useState([])
+const [searchValue,setSearchValue] = useState()
+const [categoryValue,setCategoryValue] = useState()
+const [priceRangeValue,setPriceRangeValue] = useState()
 
- // get all category
+// get All Products
+const getAllProducts =async()=>{
+  const data =await axios.get(`https://dummyjson.com/products/category-list`)
+  setAllProducts(data.data)
+  console.log(data.data)
+}
+// useEffect(()=>{
+// getAllProducts()
+// },[])
+  console.log(searchValue,categoryValue,priceRangeValue,currentPage-1,itemsPerPage)
+  // onFilterChange
+  const onFilterChange =(item,value)=>{
+    if(item === "search"){
+    setSearchValue(value)
+    }else if(item === "category"){
+     setCategoryValue(value)
+    }else{
+      setPriceRangeValue(value)
+    }
+  }
+
+  // get all category
  const getAllCategory =async()=>{
   const data =await axios.get(`https://dummyjson.com/products/category-list`)
   setCategories(data.data)
@@ -18,21 +48,9 @@ const [categories,setCategories] = useState([])
 useEffect(()=>{
 getAllCategory()
 },[])
-  // onFilterChange
-  const onFilterChange =(item,value)=>{
-    console.log(item,value)
-  }
-  // pagination
-  const [totalItems, setTotalItems] = useState(200); // Example total items
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-    // pagination
-const getAllProducts =async()=>{
-  const data =await axios.get(`https://dummyjson.com/products/category-list`)
-  console.log(data.data)
-}
+ // get all category
 
-getAllProducts()
+
 
   // pagination
   const handlePageChange = (page) => {
