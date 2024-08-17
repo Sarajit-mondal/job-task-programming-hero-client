@@ -49,7 +49,7 @@ const navbar = () => {
           </div>
           {/* SignIn/SignOut Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-100">
+            <button className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-300">
               Sign In
             </button>
             <button className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
