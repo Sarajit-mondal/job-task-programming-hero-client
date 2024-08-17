@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const SignUp = () => {
-  const [name, setName] = useState('');
+const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleGoogleSignUp = () => {
-    // Handle Google Sign Up logic here
-    console.log("Google Sign Up");
+  const handleGoogleSignIn = () => {
+    // Handle Google Sign In logic here
+    console.log("Google Sign In");
   };
 
-  const handleFacebookSignUp = () => {
-    // Handle Facebook Sign Up logic here
-    console.log("Facebook Sign Up");
+  const handleFacebookSignIn = () => {
+    // Handle Facebook Sign In logic here
+    console.log("Facebook Sign In");
   };
 
-  const handleEmailSignUp = (e) => {
+  const handleEmailSignIn = (e) => {
     e.preventDefault();
     if (password.length < 6) {
       setError('Password must be at least 6 characters long');
     } else {
-      // Handle Email Sign Up logic here
-      console.log("Email Sign Up", { name, email, password });
+      // Handle Email Sign In logic here
+      console.log("Email Sign In", { email, password });
       setError('');
     }
   };
@@ -31,32 +30,21 @@ const SignUp = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center">Sign Up</h2>
+        <h2 className="text-2xl font-bold text-center">Sign In</h2>
         <div className="space-y-4">
           <button 
-            onClick={handleGoogleSignUp} 
+            onClick={handleGoogleSignIn} 
             className="w-full py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
-            Sign Up with Google
+            Sign In with Google
           </button>
           <button 
-            onClick={handleFacebookSignUp} 
+            onClick={handleFacebookSignIn} 
             className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-            Sign Up with Facebook
+            Sign In with Facebook
           </button>
         </div>
         <div className="mt-6">
-          <form onSubmit={handleEmailSignUp}>
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700">Name</label>
-              <input
-                type="text"
-                id="name"
-                className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
+          <form onSubmit={handleEmailSignIn}>
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700">Email</label>
               <input
@@ -84,14 +72,14 @@ const SignUp = () => {
               type="submit"
               className="w-full py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900"
             >
-              Sign Up with Email
+              Sign In with Email
             </button>
           </form>
         </div>
         <p className="text-center text-gray-600 mt-4">
-          Already have an account?{' '}
-          <Link to="/signin" className="text-blue-500 hover:underline">
-            Sign In
+          Don't have an account?{' '}
+          <Link to="/signUp" className="text-blue-500 hover:underline">
+            Sign Up
           </Link>
         </p>
       </div>
@@ -99,4 +87,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

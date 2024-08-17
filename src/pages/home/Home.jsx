@@ -5,6 +5,8 @@ import Pagination from "../../component/products/Pagination";
 import ProductCard from "../../component/products/ProductCard";
 import axios from "axios";
 
+// http://localhost:5000/AllProducts?limit=10&skip=30&currentPage=2&priceSort=lowToHigh&priceRang=10-20&category=apple&search=searchValue
+
 function Home() {
   // pagination
   const [totalItems, setTotalItems] = useState(200); // Example total items
@@ -19,13 +21,12 @@ const [priceRangeValue,setPriceRangeValue] = useState()
 
 // get All Products
 const getAllProducts =async()=>{
-  const data =await axios.get(`https://dummyjson.com/products/category-list`)
+  const data =await axios.get(`http://localhost:5000/AllProducts?limit=10&skip=30&currentPage=1&priceSort=lowToHigh&priceRang=10-20&search=searchValue`)
   setAllProducts(data.data)
-  console.log(data.data)
 }
-// useEffect(()=>{
-// getAllProducts()
-// },[])
+useEffect(()=>{
+getAllProducts()
+},[])
   console.log(searchValue,categoryValue,priceRangeValue,currentPage-1,itemsPerPage)
   // onFilterChange
   const onFilterChange =(item,value)=>{
@@ -70,7 +71,7 @@ getAllCategory()
         <FilterControls onFilterChange={onFilterChange} categories={categories}/>
       </div>
       <div>
-        <ProductCard />
+        <ProductCard allProducts={allProducts}/>
       </div>
       <div className="mb-20">
         {/* pagination */}
