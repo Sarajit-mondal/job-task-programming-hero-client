@@ -19,8 +19,8 @@ const ProductCard = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 my-5">
-      {[...Array(10)].map(() => (
-        <div className="border rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
+      {[...Array(10)].map((inx) => (
+        <div key={inx} className="border rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
           <img
             src={product.thumbnail}
             alt={product.title}

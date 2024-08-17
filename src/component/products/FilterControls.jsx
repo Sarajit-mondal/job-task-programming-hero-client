@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 
-const FilterControls = ({ onFilterChange }) => {
-    const categories = [
-        "abcd",
-        "abcd",
-        "abcd",
-        "abcd",
-     ]
+const FilterControls = ({ onFilterChange,categories }) => {
+    
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (e) => {
