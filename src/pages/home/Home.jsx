@@ -28,7 +28,7 @@ function Home() {
     const data = await axios.get(
       `http://localhost:5000/AllProducts?&category=${categoryValue}&limit=${itemsPerPage}&currentPage=${
         currentPage - 1
-      }&priceSort=${priceSortValue}&priceRang=${priceRangeValue}&search=searchValue`
+      }&priceSort=${priceSortValue}&priceRang=${priceRangeValue}&search=${searchValue}`
     );
     setAllProducts(data.data.result);
     setTotalItems(data.data.totalProducts);
@@ -43,18 +43,15 @@ function Home() {
     priceRangeValue,
     priceSortValue,
   ]);
-  console.log(
-    searchValue,
-    categoryValue,
-    priceRangeValue,
-    currentPage - 1,
-    itemsPerPage
-  );
+
   // onFilterChange
   // onFilterChange
   const onFilterChange = (item, value) => {
     if (item === "search") {
       setSearchValue(value);
+      setPriceSortValue();
+      setPriceRangeValue();
+      setCategoryValue();
     } else if (item === "category") {
       setCategoryValue(value);
     } else {
@@ -97,8 +94,10 @@ function Home() {
       <div>
         <h2 className="text-4xl font-bold text-center mt-8">All Products</h2>
         <FilterControls
+          allProducts={allProducts}
           onFilterChange={onFilterChange}
           categories={categories}
+          searchValue={searchValue}
         />
       </div>
       <div>
