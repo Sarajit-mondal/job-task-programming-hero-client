@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleGoogleSignIn = () => {
-    // Handle Google Sign In logic here
-    console.log("Google Sign In");
+  const { signInWithGoogle, signIn } = useContext(AuthContext);
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      toast.success("Sign In succesfull");
+      navigate("/");
+    } catch (error) {
+      toast.error(error.code);
+    }
   };
 
   const handleFacebookSignIn = () => {
@@ -16,14 +25,20 @@ const SignIn = () => {
     console.log("Facebook Sign In");
   };
 
-  const handleEmailSignIn = (e) => {
+  const handleEmailSignIn = async (e) => {
     e.preventDefault();
     if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError("Password must be at least 6 characters long");
     } else {
       // Handle Email Sign In logic here
-      console.log("Email Sign In", { email, password });
-      setError('');
+      try {
+        await signIn(email, password);
+        toast.success("Sign In succesfull");
+        navigate("/");
+      } catch (error) {
+        toast.error(error.code);
+      }
+      setError("");
     }
   };
 
@@ -32,21 +47,25 @@ const SignIn = () => {
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center">Sign In</h2>
         <div className="space-y-4">
-          <button 
-            onClick={handleGoogleSignIn} 
-            className="w-full py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+          <button
+            onClick={handleGoogleSignIn}
+            className="w-full py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+          >
             Sign In with Google
           </button>
-          <button 
-            onClick={handleFacebookSignIn} 
-            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          <button
+            onClick={handleFacebookSignIn}
+            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
             Sign In with Facebook
           </button>
         </div>
         <div className="mt-6">
           <form onSubmit={handleEmailSignIn}>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700">Email</label>
+              <label htmlFor="email" className="block text-gray-700">
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -57,7 +76,9 @@ const SignIn = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700">Password</label>
+              <label htmlFor="password" className="block text-gray-700">
+                Password
+              </label>
               <input
                 type="password"
                 id="password"
@@ -72,12 +93,12 @@ const SignIn = () => {
               type="submit"
               className="w-full py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900"
             >
-              Sign In with Email
+              Sign In
             </button>
           </form>
         </div>
         <p className="text-center text-gray-600 mt-4">
-          Don't have an account?{' '}
+          Do not have an account?{" "}
           <Link to="/signUp" className="text-blue-500 hover:underline">
             Sign Up
           </Link>

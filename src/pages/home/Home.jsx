@@ -26,7 +26,7 @@ function Home() {
   // get All Products
   const getAllProducts = async () => {
     const data = await axios.get(
-      `http://localhost:5000/AllProducts?&category=${categoryValue}&limit=${itemsPerPage}&currentPage=${
+      `https://jobs-task-progaminghero-server.vercel.app/AllProducts?&category=${categoryValue}&limit=${itemsPerPage}&currentPage=${
         currentPage - 1
       }&priceSort=${priceSortValue}&priceRang=${priceRangeValue}&search=${searchValue}`
     );

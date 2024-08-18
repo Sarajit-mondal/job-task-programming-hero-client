@@ -1,18 +1,26 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  
-    const {signInWithGoogle,createUser} = useContext(AuthContext)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleGoogleSignUp = async() => {
+  const { signInWithGoogle, createUser } = useContext(AuthContext);
+
+  const handleGoogleSignUp = async () => {
     // Handle Google Sign Up logic here
-     await signInWithGoogle()
+    try {
+      await signInWithGoogle();
+      toast.success("Sign Up succesfull");
+      navigate("/");
+    } catch (error) {
+      toast.error(error.code);
+    }
   };
 
   const handleFacebookSignUp = () => {
@@ -20,16 +28,22 @@ const SignUp = () => {
     console.log("Facebook Sign Up");
   };
 
-  const handleEmailSignUp = async(e) => {
+  const handleEmailSignUp = async (e) => {
     e.preventDefault();
     if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError("Password must be at least 6 characters long");
     } else {
       // Handle Email Sign Up logic here
-    //   console.log("Email Sign Up", { name, email, password });
-    await createUser(email,password)
-    alert("signUp success")
-     setError('');
+      //   console.log("Email Sign Up", { name, email, password });
+      try {
+        await createUser(email, password);
+        toast.success("Sign Up succesfull");
+        navigate("/");
+      } catch (error) {
+        toast.error(error.code);
+      }
+
+      setError("");
     }
   };
 
@@ -38,21 +52,25 @@ const SignUp = () => {
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center">Sign Up</h2>
         <div className="space-y-4">
-          <button 
-            onClick={handleGoogleSignUp} 
-            className="w-full py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+          <button
+            onClick={handleGoogleSignUp}
+            className="w-full py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+          >
             Sign Up with Google
           </button>
-          <button 
-            onClick={handleFacebookSignUp} 
-            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          <button
+            onClick={handleFacebookSignUp}
+            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
             Sign Up with Facebook
           </button>
         </div>
         <div className="mt-6">
           <form onSubmit={handleEmailSignUp}>
             <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700">Name</label>
+              <label htmlFor="name" className="block text-gray-700">
+                Name
+              </label>
               <input
                 type="text"
                 id="name"
@@ -63,7 +81,9 @@ const SignUp = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700">Email</label>
+              <label htmlFor="email" className="block text-gray-700">
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -74,7 +94,9 @@ const SignUp = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700">Password</label>
+              <label htmlFor="password" className="block text-gray-700">
+                Password
+              </label>
               <input
                 type="password"
                 id="password"
@@ -89,12 +111,12 @@ const SignUp = () => {
               type="submit"
               className="w-full py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900"
             >
-              Sign Up with Email
+              Sign Up
             </button>
           </form>
         </div>
         <p className="text-center text-gray-600 mt-4">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link to="/signin" className="text-blue-500 hover:underline">
             Sign In
           </Link>
